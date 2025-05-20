@@ -1,0 +1,121 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const services = await getCollection("services");
+  return services.map((service) => ({
+    params: { id: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const { data, slug } = service;
+const { title, author, img, readtime, description, buy } = data;
+const { Content } = await service.render();
+---
+
+<Layout title={`VetClinic - ${title}`}>
+  <div class="min-h-screen pt-16">
+    <!-- Hero Section -->
+    <section class="hero-container relative h-[70vh] flex items-center overflow-hidden">
+      <img 
+        transition:name={`img-${slug}`}
+        src={`/img/${img}`} 
+        alt={title}
+        class="absolute inset-0 w-full h-full object-cover scale-100"
+        id="hero-img"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
+      
+      <div class="relative z-10 max-w-4xl mx-auto px-6">
+        <a href="/servicios" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 mb-6 transition-all hover:-translate-x-1">
+          ← Volver a servicios
+        </a>
+        
+        <h1 class="text-4xl md:text-6xl font-black text-white mb-4 animate-fade-in-up">
+          {service.data.title.replace(/^\d+-\s*/, '')}
+        </h1>
+        
+        <p class="text-xl text-gray-200 max-w-2xl leading-relaxed">
+          {description}
+        </p>
+      </div>
+    </section>
+
+    <!-- Content Card -->
+    <section class="relative -mt-20 z-20 max-w-4xl mx-auto px-6 mb-20">
+      <article class="bg-gray-800/90 backdrop-blur-lg rounded-2xl p-8 border border-gray-700 shadow-2xl animate-float-up">
+        <div class="prose prose-invert prose-lg max-w-none">
+          <Content />
+        </div>
+        
+        <div class="flex flex-col sm:flex-row gap-4 mt-8 pt-6 border-t border-gray-700">
+          <button class="bg-gradient-to-r from-emerald-600 to-cyan-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-emerald-500 hover:to-cyan-500 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-emerald-500/40">
+            Agendar Cita
+          </button>
+          <button class="border-2 border-emerald-500 text-emerald-400 px-8 py-4 rounded-xl font-semibold hover:bg-emerald-500 hover:text-white transition-all duration-300">
+            Más Información
+          </button>
+        </div>
+      </article>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out;
+  }
+  
+  .animate-float-up {
+    animation: floatUp 1s ease-out 0.3s both;
+  }
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes floatUp {
+    from { opacity: 0; transform: translateY(100px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  #hero-img {
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: blur(0px);
+  will-change: transform;
+}
+
+.hero-container {
+  overflow: hidden;
+  mask-image: radial-gradient(ellipse at center, black 70%, transparent 100%);
+}
+</style>
+
+<script>
+  let ticking = false;
+  
+  function updateParallax() {
+    const img = document.getElementById('hero-img');
+    if (img) {
+      const scrolled = window.pageYOffset;
+      const viewportHeight = window.innerHeight;
+      const rate = Math.min(scrolled * 0.15, viewportHeight * 0.3);
+      
+      requestAnimationFrame(() => {
+        img.style.transform = `translate3d(0, ${rate}px, 0) scale(1.02)`;
+      });
+    }
+    ticking = false;
+  }
+  
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  });
+</script>
