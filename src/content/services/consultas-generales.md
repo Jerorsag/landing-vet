@@ -1,5 +1,5 @@
 ---
-title: 1- Consultas generales
+title: Consultas generales
 description: Nuestra clínica ofrece consultas generales personalizadas para evaluar la salud de su mascota. Nuestros veterinarios expertos realizarán un examen físico completo, revisarán el historial médico y proporcionarán un diagnóstico preciso y recomendaciones para el tratamiento adecuado. 
 img: consultas-generales.jpg
 ---

@@ -1,39 +1,35 @@
-<header class="fixed w-full top-0 z-50 bg-[#0f172a]/80 backdrop-blur-sm">
+<header class="fixed w-full top-0 z-50 bg-white shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
-      <!-- Logo y nombre -->
+      <!-- Logo con animación sutil -->
       <div class="flex items-center">
-        <a href="/" class="flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 2a3 3 0 0 0-3 3v1H9V5a3 3 0 1 0-6 0v9a3 3 0 0 0 6 0v-1h6v1a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
-            <circle cx="6" cy="14" r="1"></circle>
-            <circle cx="18" cy="14" r="1"></circle>
-          </svg>
-          <span class="ml-2 text-xl font-bold text-white">VetClinic</span>
+        <a href="/" class="group flex items-center transition-transform duration-300 hover:scale-105">
+          <img src="/img/vet-icon.jpg" alt="Veterinary Icon" class="w-12 h-12 object-contain hidden md:block" />
+          <span class="ml-2 text-xl font-bold text-blue-900">VetHumboldt</span>
         </a>
       </div>
       
-      <!-- Navegación principal -->
+      <!-- Navegación principal con efecto de subrayado -->
       <div class="hidden md:flex items-center space-x-8">
-        <a href="/servicios" class="text-gray-300 hover:text-white hover:border-b-2 hover:border-emerald-500 px-1 py-2 text-sm font-medium transition-colors duration-200">
+        <a href="/servicios" class="border-transparent text-gray-600 hover:text-blue-700 hover:border-blue-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200">
           Servicios
         </a>
-        <a href="/contact" class="text-gray-300 hover:text-white hover:border-b-2 hover:border-emerald-500 px-1 py-2 text-sm font-medium transition-colors duration-200">
+        <a href="/contact" class="border-transparent text-gray-600 hover:text-blue-700 hover:border-blue-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200">
           Contacto
         </a>
-        <a href="/blog" class="text-gray-300 hover:text-white hover:border-b-2 hover:border-emerald-500 px-1 py-2 text-sm font-medium transition-colors duration-200">
+        <a href="/blog" class="border-transparent text-gray-600 hover:text-blue-700 hover:border-blue-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200">
           Blog
         </a>
       </div>
       
       <!-- Botón de inicio de sesión -->
       <div class="flex items-center">
-        <a href="/login" class="ml-4 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-colors duration-200">
+        <a href="/login" class="ml-4 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-800 hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
           Ingresar
         </a>
         
         <!-- Menú hamburguesa para móviles -->
-        <button type="button" id="menu-toggle" class="md:hidden ml-2 p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+        <button type="button" id="menu-toggle" class="md:hidden ml-2 p-2 rounded-md text-gray-500 hover:text-blue-700 focus:outline-none">
           <span class="sr-only">Abrir menú</span>
           <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -44,15 +40,18 @@
   </div>
   
   <!-- Menú móvil -->
-  <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-      <a href="/servicios" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+      <a href="/servicios" class="text-gray-600 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
         Servicios
       </a>
-      <a href="/contacto" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+      <a href="/especialidades" class="text-gray-600 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
+        Especialidades
+      </a>
+      <a href="/contacto" class="text-gray-600 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
         Contacto
       </a>
-      <a href="/blog" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+      <a href="/blog" class="text-gray-600 hover:bg-blue-50 hover:text-blue-700 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200">
         Blog
       </a>
     </div>
@@ -60,7 +59,6 @@
 </header>
 
 <script>
-  // Toggle para el menú móvil
   document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
